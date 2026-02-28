@@ -3,3 +3,5 @@ live/
 .firecrawl/
 dist/
 .astro/
+screenshots/
+.playwright-mcp/
