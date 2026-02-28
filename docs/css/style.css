@@ -87,29 +87,97 @@ h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
   border-radius: 50%;
 }
 
-.nav__links {
+/* --- Menu container (holds the 3 dropdown groups) --- */
+.nav__menu {
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  flex-wrap: wrap;
 }
 
-.nav__links a {
+.nav__menu > .nav__donate {
+  display: none;
+}
+
+/* --- Each dropdown group --- */
+.nav__group {
+  position: relative;
+}
+
+.nav__group-label {
   font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.5rem 0.9rem;
   border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
   white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
 }
 
-.nav__links a:hover,
-.nav__links a.active {
+.nav__group-label::after {
+  content: '';
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid currentColor;
+  transition: transform 0.2s;
+}
+
+.nav__group-label:hover,
+.nav__group.has-active > .nav__group-label {
   background: var(--color-purple-light);
   color: var(--color-purple-dark);
 }
 
+/* --- Dropdown panel --- */
+.nav__dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  background: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  padding: 0.5rem 0;
+  z-index: 200;
+}
+
+/* Show on hover or focus-within (desktop) */
+.nav__group:hover > .nav__dropdown,
+.nav__group:focus-within > .nav__dropdown {
+  display: block;
+}
+
+.nav__group:hover > .nav__group-label::after,
+.nav__group:focus-within > .nav__group-label::after {
+  transform: rotate(180deg);
+}
+
+/* --- Links inside dropdown --- */
+.nav__dropdown a {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.55rem 1.2rem;
+  color: var(--color-text);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.nav__dropdown a:hover,
+.nav__dropdown a.active {
+  background: var(--color-purple-light);
+  color: var(--color-purple-dark);
+}
+
+/* --- Donate button (standalone) --- */
 .nav__donate {
   font-family: var(--font-heading);
   font-weight: 700;
@@ -129,6 +197,7 @@ h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
   color: var(--color-white) !important;
 }
 
+/* --- Hamburger (hidden on desktop) --- */
 .nav__hamburger {
   display: none;
   background: none;
@@ -585,7 +654,7 @@ h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .nav__links {
+  .nav__menu {
     display: none;
     position: absolute;
     top: var(--nav-height);
@@ -593,19 +662,14 @@ h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
     right: 0;
     background: var(--color-white);
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.5rem 1rem 1rem;
     border-bottom: 1px solid var(--color-border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    gap: 0;
   }
 
-  .nav__links.open {
+  .nav__menu.open {
     display: flex;
-  }
-
-  .nav__links a {
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    width: 100%;
   }
 
   .nav__hamburger {
@@ -614,6 +678,55 @@ h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
 
   .nav__donate--desktop {
     display: none;
+  }
+
+  /* Mobile: dropdowns are always visible (accordion-style) */
+  .nav__group {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav__group:last-child {
+    border-bottom: none;
+  }
+
+  .nav__group-label {
+    width: 100%;
+    padding: 0.85rem 0.5rem;
+    font-size: 0.95rem;
+    justify-content: space-between;
+  }
+
+  .nav__dropdown {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0 0 0.5rem 0.75rem;
+    display: none;
+  }
+
+  /* Override desktop hover — only JS toggles on mobile */
+  .nav__group:hover > .nav__dropdown,
+  .nav__group:focus-within > .nav__dropdown {
+    display: none;
+  }
+
+  .nav__group.open > .nav__dropdown {
+    display: block;
+  }
+
+  .nav__group.open > .nav__group-label::after {
+    transform: rotate(180deg);
+  }
+
+  .nav__dropdown a {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .nav__menu .nav__donate {
+    display: block;
+    text-align: center;
+    margin-top: 0.75rem;
   }
 
   h1 { font-size: 1.8rem; }
