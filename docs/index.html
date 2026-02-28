@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiny but Mighty Kitten Rescue</title>
+  <meta name="description" content="A registered charity rescuing orphaned kittens, offering pregnant cats a safe space, and providing subsidized spay/neuter programs in Cornwall, Ontario.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="/" class="nav__logo">
+        <img src="images/logo.png" alt="Tiny but Mighty Kitten Rescue" width="40" height="40">
+      </a>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__links">
+        <a href="/" class="active">Home</a>
+        <a href="/adopt/">Adopt</a>
+        <a href="/subsidized-spay-neuter/">Spay / Neuter</a>
+        <a href="/about-3/">Feed A Feral</a>
+        <a href="/favourites/">Favourites</a>
+        <a href="/lotto-for-cats/">Lotto for Cats</a>
+        <a href="/empties/">Empties</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/volunteer/">Volunteer</a>
+        <a href="/donate/" class="nav__donate">Donate</a>
+      </div>
+      <a href="/donate/" class="nav__donate nav__donate--desktop">Donate</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="images/logo.png" alt="Tiny but Mighty Kitten Rescue — illustrated cats logo" class="hero__logo" width="280" height="280">
+    <h1 class="hero__title">Our Mission</h1>
+    <p class="hero__text">We are a registered charity that rescues orphaned kittens, offers pregnant cats a safe space to raise their final litter, provides full veterinary care and finds them forever homes. Through our subsidized spay and neuter program, we reduce the number of unwanted cats so fewer end up on the streets without homes.</p>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="section section--white">
+    <div class="container text-center">
+      <div class="quick-links">
+        <a href="/donate/" class="btn btn--orange">Donate</a>
+        <a href="https://www.patreon.com/tinybutmightykittenrescue" target="_blank" rel="noopener" class="btn btn--outline">Join Patreon</a>
+        <a href="/adopt/" class="btn btn--outline">Adopt</a>
+        <a href="/favourites/" class="btn btn--outline">Favourites</a>
+        <a href="/about-3/" class="btn btn--outline">Feed A Feral Program</a>
+        <a href="/faq/" class="btn btn--outline">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="section section--purple">
+    <div class="container text-center">
+      <h2>Follow us on Instagram</h2>
+      <p><a href="https://www.instagram.com/tinybutmightykittenrescue" target="_blank" rel="noopener" style="color: var(--color-orange); font-weight: 700;">@tinybutmightykittenrescue</a></p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 1.5rem;">Contact Us</h2>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('This form is a preview — not yet connected.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn btn--orange btn--full">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <img src="images/logo-footer.png" alt="Tiny but Mighty Kitten Rescue" class="footer__logo" width="140" height="140">
+      <div class="social-links">
+        <a href="https://www.facebook.com/tinybutmightykittenrescue" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/tinybutmightykittenrescue/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+        <a href="https://www.tiktok.com/@tinybutmightykittens" target="_blank" rel="noopener" aria-label="TikTok">tt</a>
+        <a href="https://www.patreon.com/tinybutmightykittenrescue" target="_blank" rel="noopener" aria-label="Patreon">P</a>
+        <a href="https://www.amazon.ca/hz/wishlist/ls/2FNFZ199VJHV9" target="_blank" rel="noopener" aria-label="Amazon Wish List">A</a>
+      </div>
+      <nav class="footer__nav">
+        <a href="/adopt/">Adopt</a>
+        <a href="/empties/">Empties</a>
+        <a href="/favourites/">Favourites</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/#contact">Contact</a>
+        <a href="/donate/">Donate</a>
+      </nav>
+      <p class="footer__copy">&copy; 2021 Tiny but Mighty Kitten Rescue | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
