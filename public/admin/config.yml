@@ -1,0 +1,154 @@
+backend:
+  name: github
+  repo: mattwren88/tinybutmightykittenrescue
+  branch: main
+
+# Media files stored in public/images/uploads
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+# Site URL for preview links
+site_url: https://mattwren88.github.io/tinybutmightykittenrescue
+
+collections:
+
+  # ──────────────────────────────────────────
+  # Adoptable Cats
+  # ──────────────────────────────────────────
+  - name: cats
+    label: Adoptable Cats
+    label_singular: Cat
+    folder: src/content/cats
+    create: true
+    slug: "{{slug}}"
+    summary: "{{name}} — {{status}}"
+    fields:
+      - label: Name
+        name: name
+        widget: string
+        hint: "Cat's name (e.g. Luna, Mochi)"
+      - label: Age
+        name: age
+        widget: string
+        hint: 'e.g. "8 weeks", "1 year", "3 months"'
+      - label: Breed
+        name: breed
+        widget: string
+        required: false
+        hint: 'e.g. "Domestic Shorthair", "Tabby"'
+      - label: Sex
+        name: sex
+        widget: select
+        options: ["Male", "Female"]
+        required: false
+      - label: Short Description
+        name: description
+        widget: text
+        hint: "1-2 sentence summary shown on the listings page"
+      - label: Photo
+        name: photo
+        widget: image
+        hint: "Upload a photo of the cat"
+      - label: Adoption Status
+        name: status
+        widget: select
+        options:
+          - label: "Available"
+            value: Available
+          - label: "Pending (application received)"
+            value: Pending
+          - label: "Adopted"
+            value: Adopted
+        default: Available
+      - label: Bonded With
+        name: bondedWith
+        widget: string
+        required: false
+        hint: "If this cat must be adopted with another, enter their name here"
+      - label: Featured on Homepage
+        name: featured
+        widget: boolean
+        default: false
+      - label: Full Bio
+        name: body
+        widget: markdown
+        required: false
+        hint: "Longer story about this cat (optional)"
+
+  # ──────────────────────────────────────────
+  # News & Events
+  # ──────────────────────────────────────────
+  - name: news
+    label: News & Events
+    label_singular: Post
+    folder: src/content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+      - label: Summary
+        name: summary
+        widget: text
+        required: false
+        hint: "Short preview text (optional)"
+      - label: Image
+        name: image
+        widget: image
+        required: false
+      - label: Content
+        name: body
+        widget: markdown
+
+  # ──────────────────────────────────────────
+  # Foster Favourites (Amazon links)
+  # ──────────────────────────────────────────
+  - name: favourites
+    label: Foster Favourites
+    files:
+      - name: favourites_list
+        label: Favourites List
+        file: src/data/favourites.json
+        fields:
+          - label: Products
+            name: items
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - label: Product Name
+                name: name
+                widget: string
+                hint: "e.g. KMR Kitten Milk Replacer"
+              - label: Amazon URL
+                name: url
+                widget: string
+                hint: "Paste the full Amazon product URL"
+              - label: Amazon ASIN
+                name: asin
+                widget: string
+                hint: "The product ID from the Amazon URL (e.g. B0002DHUVG). Found in the URL after /dp/"
+              - label: Description
+                name: description
+                widget: string
+                required: false
+                hint: "Short description of what the product is used for"
+              - label: Category
+                name: category
+                widget: select
+                options:
+                  - Feeding
+                  - Housing & Bedding
+                  - Health & Medical
+                  - Toys & Enrichment
+                  - Grooming
+                  - Litter & Cleaning
+                  - Other
+                default: Other

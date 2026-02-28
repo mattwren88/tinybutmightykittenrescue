@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import favouritesData from '../../data/favourites.json';
+
+const base = import.meta.env.BASE_URL;
+const { items } = favouritesData;
+
+// Group items by category
+const categories = [...new Set(items.map((item: any) => item.category))];
+
+function getAmazonImageUrl(asin: string) {
+  return `https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=_SL250_`;
+}
+---
+
+<Base title="Foster Favourites — Tiny but Mighty Kitten Rescue" activeNav="favourites/">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Foster Favourites</h1>
+    <p>Our recommended products for fostering and caring for cats and kittens.</p>
+  </div>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container content content--narrow text-center">
+      <p>These are products we use and love! Many can be purchased through our Amazon Wish List — items purchased are shipped directly to us and help keep our rescue running.</p>
+      <a href="https://www.amazon.ca/hz/wishlist/ls/2FNFZ199VJHV9" target="_blank" rel="noopener" class="btn btn--orange">Amazon Wish List</a>
+    </div>
+  </section>
+
+  {categories.map((category: any) => {
+    const categoryItems = items.filter((item: any) => item.category === category);
+    return (
+      <section class="section section--white">
+        <div class="container">
+          <h2 style="margin-bottom: 2rem;">{category}</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem;">
+            {categoryItems.map((item: any) => (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener sponsored"
+                style="display: block; text-decoration: none; color: inherit;"
+              >
+                <div class="card" style="height: 100%; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem;">
+                  <img
+                    src={getAmazonImageUrl(item.asin)}
+                    alt={item.name}
+                    loading="lazy"
+                    style="width: 160px; height: 160px; object-fit: contain; margin-bottom: 1rem;"
+                  />
+                  <strong style="font-size: 0.95rem; line-height: 1.4; margin-bottom: 0.5rem;">{item.name}</strong>
+                  {item.description && (
+                    <p style="font-size: 0.85rem; color: var(--color-text-light); margin: 0;">{item.description}</p>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  })}
+
+</Base>

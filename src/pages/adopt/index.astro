@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Adopt — Tiny but Mighty Kitten Rescue" activeNav="adopt/">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Adopt</h1>
+  </div>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container content content--narrow">
+      <p>If you're interested in adopting a kitten(s) please thoroughly read the following information.</p>
+      <p>Please only fill out the adoption application below if you are interested in a specific kitten(s) and 100% committed and ready to adopt from us.</p>
+      <p>We try our best to respond but due to the high volume of inquiries, our small adoption team and limited time, you may not receive a response.</p>
+
+      <h3>Requirements</h3>
+      <ul>
+        <li>Unless specified otherwise, applicants must live within 4 hours driving distance of Cornwall, Ontario. In Canada only.</li>
+        <li>Applicants must be 21+ to apply.</li>
+        <li>Kittens are social animals and do better in pairs! Tiny but Mighty Kitten Rescue typically adopts out kittens in bonded pairs. If you do not have a friendly feline in your home, please consider applying for 2!</li>
+        <li>Fill out the form thoroughly. Incomplete adoption applications will not be considered.</li>
+      </ul>
+
+      <h3>What our adoption fee includes</h3>
+      <p>Tiny but Mighty Kitten Rescue ensures that each cat / kitten is dewormed, treated for fleas/ear mites, vaccinated, spayed or neutered and microchipped.</p>
+      <p>Adult cats will receive their FVRCP and rabies vaccine. Some adult cats with existing medical conditions may not receive a rabies vaccine.</p>
+      <p>Kittens will receive their FVRCP vaccine. Adopters are responsible for their rabies vaccine after 16 weeks of age.</p>
+      <p>The adoption will not be finalized until they're sterilized and microchipped.</p>
+
+      <h3>Adoption Fees</h3>
+      <p>$200 for adult cats</p>
+      <p>$250 for 1 kitten</p>
+      <p>$400 for a pair</p>
+      <p>Our adoption fee helps to cover some of the costs for vet bills so we can continue to save lives.</p>
+
+      <a href={`${base}adoptable/`} class="btn btn--orange btn--full">Adoptable Cats / Kittens</a>
+    </div>
+  </section>
+
+</Base>

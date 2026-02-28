@@ -1,3 +1,5 @@
 node_modules/
 live/
 .firecrawl/
+dist/
+.astro/

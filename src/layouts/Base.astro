@@ -1,0 +1,114 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  activeNav?: string;
+}
+
+const { title, description = 'A registered charity rescuing orphaned kittens, offering pregnant cats a safe space, and providing subsidized spay/neuter programs in Cornwall, Ontario.', activeNav } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+const navGroups = [
+  {
+    label: 'Our Cats',
+    links: [
+      { href: 'adopt/', text: 'Adopt' },
+      { href: 'favourites/', text: 'Favourites' },
+      { href: 'lotto-for-cats/', text: 'Lotto for Cats' },
+    ],
+  },
+  {
+    label: 'Programs',
+    links: [
+      { href: 'subsidized-spay-neuter/', text: 'Spay / Neuter' },
+      { href: 'about-3/', text: 'Feed A Feral' },
+      { href: 'empties/', text: 'Empties' },
+      { href: 'emergency-survival-kit/', text: 'Emergency Kit' },
+    ],
+  },
+  {
+    label: 'Get Involved',
+    links: [
+      { href: 'volunteer/', text: 'Volunteer' },
+      { href: 'faq/', text: 'FAQ' },
+      { href: '#contact', text: 'Contact' },
+    ],
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href={`${base}css/style.css`}>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a href={base} class="nav__logo">
+        <img src={`${base}images/logo.png`} alt="Tiny but Mighty Kitten Rescue" width="40" height="40">
+      </a>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu">
+        {navGroups.map((group) => {
+          const hasActive = group.links.some(l => l.href === activeNav || l.href === `${activeNav}/`);
+          return (
+            <div class={`nav__group${hasActive ? ' has-active' : ''}`}>
+              <button class="nav__group-label" aria-expanded="false">{group.label}</button>
+              <div class="nav__dropdown">
+                {group.links.map(link => {
+                  const isActive = link.href === activeNav || link.href === `${activeNav}/`;
+                  const href = link.href.startsWith('#') ? link.href : `${base}${link.href}`;
+                  return (
+                    <a href={href} class={isActive ? 'active' : undefined}>{link.text}</a>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+        <a href={`${base}donate/`} class="nav__donate">Donate</a>
+      </div>
+      <a href={`${base}donate/`} class="nav__donate nav__donate--desktop">Donate</a>
+    </nav>
+  </header>
+
+  <slot />
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <img src={`${base}images/logo-footer.png`} alt="Tiny but Mighty Kitten Rescue" class="footer__logo" width="140" height="140">
+      <div class="social-links">
+        <a href="https://www.facebook.com/tinybutmightykittenrescue" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/tinybutmightykittenrescue/" target="_blank" rel="noopener" aria-label="Instagram">ig</a>
+        <a href="https://www.tiktok.com/@tinybutmightykittens" target="_blank" rel="noopener" aria-label="TikTok">tt</a>
+        <a href="https://www.patreon.com/tinybutmightykittenrescue" target="_blank" rel="noopener" aria-label="Patreon">P</a>
+        <a href="https://www.amazon.ca/hz/wishlist/ls/2FNFZ199VJHV9" target="_blank" rel="noopener" aria-label="Amazon Wish List">A</a>
+      </div>
+      <nav class="footer__nav">
+        <a href={`${base}adopt/`}>Adopt</a>
+        <a href={`${base}empties/`}>Empties</a>
+        <a href={`${base}favourites/`}>Favourites</a>
+        <a href={`${base}faq/`}>FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href={`${base}donate/`}>Donate</a>
+      </nav>
+      <p class="footer__copy">&copy; 2021 Tiny but Mighty Kitten Rescue | All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <script is:inline src={`${base}js/main.js`}></script>
+</body>
+</html>

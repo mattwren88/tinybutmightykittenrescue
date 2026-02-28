@@ -1,0 +1,11 @@
+[     550ms] [ERROR] Refused to apply style from 'http://localhost:4322/tinybutmightykittenrescuecss/style.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ http://localhost:4322/tinybutmightykittenrescue/:0
+[     596ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescueimages/logo-footer.png:0
+[     596ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescueimages/logo.png:0
+[     596ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescuejs/main.js:0
+[     597ms] [ERROR] Refused to execute script from 'http://localhost:4322/tinybutmightykittenrescuejs/main.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:4322/tinybutmightykittenrescue/:0
+[     668ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/favicon.ico:0
+[    1097ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescueimages/logo.png:0
+[    1101ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescueimages/logo.png:0
+[    1102ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/tinybutmightykittenrescueimages/logo-footer.png:0
+[   18873ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:4322/:0
+[   19889ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:4322/:0

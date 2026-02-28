@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Lotto for Cats — Tiny but Mighty Kitten Rescue" activeNav="lotto-for-cats/">
+
+  <!-- Hero -->
+  <section class="section section--purple text-center">
+    <div class="container">
+      <img src={`${base}images/lotto-logo.png`} alt="Lotto for Cats" style="max-width: 240px; border-radius: 50%; margin-bottom: 1.5rem;">
+      <h1>Ontario Canada's Official Lottery for Cats</h1>
+      <p>Win prizes, save lives!</p>
+      <p>Ticket sales help fund essential spay/neuter surgeries and rescue work through Tiny but Mighty Kitten Rescue.</p>
+    </div>
+  </section>
+
+  <!-- Raffle History -->
+  <section class="section">
+    <div class="container content content--narrow">
+      <h2>Raffle History</h2>
+      <div class="card">
+        <h3>50/50 Raffle — Feb 7-14, 2026</h3>
+        <p>Licence #: RAF1519703</p>
+        <p>Amount raised: $3,610</p>
+        <p>Winner's share: $1,805</p>
+        <p>Amount after fees: $1,365</p>
+      </div>
+      <p style="font-style: italic;">AGCO Charitable Gaming Eligibility Number: CGE1515241</p>
+    </div>
+  </section>
+
+</Base>

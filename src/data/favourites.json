@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "name": "KMR Kitten Milk Replacer",
+      "url": "https://www.amazon.ca/dp/B0002DHUVG",
+      "asin": "B0002DHUVG",
+      "description": "Essential milk formula for orphaned or rejected newborn kittens",
+      "category": "Feeding"
+    },
+    {
+      "name": "Miracle Nipples with Bottle",
+      "url": "https://www.amazon.ca/dp/B0002AR0I8",
+      "asin": "B0002AR0I8",
+      "description": "Soft nipples ideal for bottle feeding kittens",
+      "category": "Feeding"
+    }
+  ]
+}

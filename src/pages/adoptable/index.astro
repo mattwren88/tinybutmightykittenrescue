@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const base = import.meta.env.BASE_URL;
+const allCats = await getCollection('cats');
+const availableCats = allCats.filter(cat => cat.data.status === 'Available');
+---
+
+<Base title="Adoptable Cats and Kittens — Tiny but Mighty Kitten Rescue" activeNav="adopt/">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Adoptable Cats and Kittens</h1>
+  </div>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container content content--narrow">
+      <div class="highlight-box">
+        <p>If you are 100% committed and ready to adopt, click below to fill out the adoption application.</p>
+      </div>
+
+      <p>Adoption applications can take up to 4 weeks to review before forever families are chosen. Only those that are being considered as a potential forever family or chosen as a forever family will be contacted. Your patience and understanding is appreciated.</p>
+
+      <a href={`${base}adopt/`} class="btn btn--orange btn--full">Adoption Application</a>
+
+      <p>Check our <a href="https://www.instagram.com/tinybutmightykittenrescue/" target="_blank" rel="noopener">Instagram</a> for the latest available cats and kittens!</p>
+    </div>
+  </section>
+
+  {availableCats.length > 0 && (
+    <section class="section section--white">
+      <div class="container">
+        <h2 class="text-center" style="margin-bottom: 2rem;">Currently Available</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem;">
+          {availableCats.map(cat => (
+            <div class="card">
+              {cat.data.photo && (
+                <img
+                  src={cat.data.photo.startsWith('/') ? `${base}${cat.data.photo.slice(1)}` : cat.data.photo}
+                  alt={cat.data.name}
+                  style="width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;"
+                />
+              )}
+              <h3>{cat.data.name}</h3>
+              <p><strong>Age:</strong> {cat.data.age}</p>
+              {cat.data.sex && <p><strong>Sex:</strong> {cat.data.sex}</p>}
+              {cat.data.breed && <p><strong>Breed:</strong> {cat.data.breed}</p>}
+              <p>{cat.data.description}</p>
+              {cat.data.bondedWith && <p><em>Bonded with {cat.data.bondedWith}</em></p>}
+              <a href={`${base}adopt/`} class="btn btn--orange" style="margin-top: 1rem; display: inline-block;">Apply to Adopt</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+</Base>

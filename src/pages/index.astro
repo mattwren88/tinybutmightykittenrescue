@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<Base title="Tiny but Mighty Kitten Rescue" activeNav="">
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src={`${base}images/logo.png`} alt="Tiny but Mighty Kitten Rescue — illustrated cats logo" class="hero__logo" width="280" height="280">
+    <h1 class="hero__title">Our Mission</h1>
+    <p class="hero__text">We are a registered charity that rescues orphaned kittens, offers pregnant cats a safe space to raise their final litter, provides full veterinary care and finds them forever homes. Through our subsidized spay and neuter program, we reduce the number of unwanted cats so fewer end up on the streets without homes.</p>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="section section--white">
+    <div class="container text-center">
+      <div class="quick-links">
+        <a href={`${base}donate/`} class="btn btn--orange">Donate</a>
+        <a href="https://www.patreon.com/tinybutmightykittenrescue" target="_blank" rel="noopener" class="btn btn--outline">Join Patreon</a>
+        <a href={`${base}adopt/`} class="btn btn--outline">Adopt</a>
+        <a href={`${base}favourites/`} class="btn btn--outline">Favourites</a>
+        <a href={`${base}about-3/`} class="btn btn--outline">Feed A Feral Program</a>
+        <a href={`${base}faq/`} class="btn btn--outline">FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="section section--purple">
+    <div class="container text-center">
+      <h2>Follow us on Instagram</h2>
+      <p><a href="https://www.instagram.com/tinybutmightykittenrescue" target="_blank" rel="noopener" style="color: var(--color-orange); font-weight: 700;">@tinybutmightykittenrescue</a></p>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="text-center" style="margin-bottom: 1.5rem;">Contact Us</h2>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('This form is a preview — not yet connected.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first-name">First Name *</label>
+            <input type="text" id="first-name" name="first-name" required>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn btn--orange btn--full">Submit</button>
+      </form>
+    </div>
+  </section>
+
+</Base>
