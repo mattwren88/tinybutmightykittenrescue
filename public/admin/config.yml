@@ -2,6 +2,7 @@ backend:
   name: github
   repo: mattwren88/tinybutmightykittenrescue
   branch: main
+  base_url: https://YOUR-WORKER-NAME.YOUR-SUBDOMAIN.workers.dev  # replace with your Cloudflare Worker URL
 
 # Media files stored in public/images/uploads
 media_folder: public/images/uploads
